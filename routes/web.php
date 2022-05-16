@@ -20,3 +20,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+
+Route::resource('languages', App\Http\Controllers\languageController::class);
+
+
+
+
+Route::resource('questionTypes', App\Http\Controllers\questionTypeController::class);

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Answer;
 use Eloquent as Model;
 use App\Models\questionType;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -83,4 +84,9 @@ class Question extends Model
     // {
     //     return questionType::where('id',$this->tid)->pluck('type')->first();
     // }
+
+    public function Answer()
+    {
+        return $this->hasMany(Answer::class, 'qid', 'id');
+    }
 }

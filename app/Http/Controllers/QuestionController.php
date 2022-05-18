@@ -73,7 +73,7 @@ class QuestionController extends AppBaseController
      */
     public function show($id)
     {
-        $question = Question::with('questionType','language','User')->find($id);
+        $question = Question::with('questionType','language','User','Answer','Answer.User')->find($id);
         
        
         if (empty($question)) {

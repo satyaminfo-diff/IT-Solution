@@ -24,6 +24,21 @@
     {!! Form::label('uid', 'user Name:') !!}
     <p>{{ $question->User->first_name }} {{ $question->User->last_name }} </p>
 </div>
+<div class="col-sm-12">
+    {!! Form::label('aid', 'Answers:') !!}
+    @foreach ( $question->Answer as $item )
+    {{-- {{dd($item)}} --}}
+    {{-- <p>{{ $item->answer}}</p> --}}
+    <div class="card border-success mb-3" style="max-width: 50rem;">
+        <div class="card-header">{{$item->User->FullName}}</div>
+        <div class="card-body text-success">
+          <p class="card-text">{{ $item->answer}}</p>
+        </div>
+    </div>
+    @endforeach
+    
+   
+</div>
 
 <!-- Created At Field -->
 <div class="col-sm-12">

@@ -57,9 +57,9 @@ class Answer extends Model
         'uid' => 'required'
     ];
     public function Question(){
-        return $this->hasOne(Question::class,'id','qid');
+        return $this->hasOne(Question::class,'qid','id');
     }
     public function User(){
-        return $this->hasOne(User::class,'id','uid');
-    }   
+        return $this->BelongsTo(User::class,'uid','id');
+    }    
 }

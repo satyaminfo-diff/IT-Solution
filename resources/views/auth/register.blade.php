@@ -40,24 +40,75 @@
         <div class="card-body register-card-body">
             <p class="login-box-msg">Register a new membership</p>
 
-            <form method="post" action="{{ route('register') }}">
+            <form method="post" action="{{ route('register') }}" enctype="multipart/form-data" >
                 @csrf
 
                 <div class="input-group mb-3">
                     <input type="text"
-                           name="name"
-                           class="form-control @error('name') is-invalid @enderror"
-                           value="{{ old('name') }}"
+                           name="first_name"
+                           class="form-control @error('first_name') is-invalid @enderror"
+                           value="{{ old('first_name') }}"
                            placeholder="Full name">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
                         </div>
                     </div>
-                    @error('name')
+                    @error('first_name')
                     <span class="error invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
+
+                <div class="input-group mb-3">
+                    <input type="text"
+                           name="last_name"
+                           class="form-control @error('last_name') is-invalid @enderror"
+                           value="{{ old('last_name') }}"
+                           placeholder="Last name">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                    @error('last_name')
+                    <span class="error invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="form-check">
+                          <input type="radio"
+                                 name="gender"
+                                 class="form-check-input @error('gender') is-invalid @enderror"
+                             Value='m'>Male <br/>
+                          <input type="radio"
+                               name="gender"
+                               class="form-check-input @error('gender') is-invalid @enderror"
+                               Value='f' checked>Female
+                    </div>
+                             {{-- <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-user"></span>
+                                </div> --}}
+                            </div>
+                    @error('gender')
+                        <span class="error invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                   <div class="input-group mb-3">
+                        <input type="file"  name="profile"                          
+                               class=" form-control @error('profile') is-invalid @enderror">
+                           <div class="input-group-append">
+                            {{-- <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div> --}}
+                        </div>
+                        @error('profile')
+                            <span class="error invalid-feedback">{{ $message }}</span>
+                        @enderror
+                    </div>
+                  
 
                 <div class="input-group mb-3">
                     <input type="email"

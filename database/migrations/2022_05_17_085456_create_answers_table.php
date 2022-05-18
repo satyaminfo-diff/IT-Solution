@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuestionTypesTable extends Migration
+class CreateAnswersTable extends Migration
 {
 
     /**
@@ -14,9 +14,11 @@ class CreateQuestionTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('question_types', function (Blueprint $table) {
+        Schema::create('answers', function (Blueprint $table) {
             $table->id('id');
-            $table->string('type');
+            $table->text('answer');
+            $table->integer('qid');
+            $table->integer('uid');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,13 +31,7 @@ class CreateQuestionTypesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('question_types');
+        Schema::drop('answers');
     }
+   
 }
-// php artisan infyom:scaffold Question --relation
-// title text text
-// required
-// description text textarea
-// required
-// tid integer 1t1,questionType,id,tid
-

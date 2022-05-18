@@ -30,3 +30,9 @@ Route::resource('languages', App\Http\Controllers\languageController::class);
 
 
 Route::resource('questionTypes', App\Http\Controllers\questionTypeController::class);
+
+
+Route::resource('questions', App\Http\Controllers\QuestionController::class);
+
+
+Route::resource('answers', App\Http\Controllers\AnswerController::class);

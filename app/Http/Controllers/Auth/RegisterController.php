@@ -22,6 +22,7 @@ class RegisterController extends Controller
     |
     */
 
+
     use RegistersUsers;
 
     /**
@@ -49,10 +50,14 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        // dd($data);
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'first_name' => ['required', 'max:255'],
+            'last_name' => ['required', 'max:255'],
+            'gender' => ['required'],
+            'profile' => ['required','max:2048'],
+            'email' => ['required', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -63,10 +68,17 @@ class RegisterController extends Controller
      * @return \App\Models\User
      */
     protected function create(array $data)
-    {
+    {   
+        $file= $data['profile'];
+        $filename=$file->getClientOriginalName();
+        $path=storage_path().'/app/public/upload';
+        $file->move($path,$filename);
         return User::create([
-            'name' => $data['name'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'gender' => $data['gender'],
             'email' => $data['email'],
+            'profile' =>$filename,
             'password' => Hash::make($data['password']),
         ]);
     }

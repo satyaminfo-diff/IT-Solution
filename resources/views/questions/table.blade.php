@@ -2,33 +2,24 @@
     <table class="table" id="questions-table">
         <thead>
         <tr>
+            <th>no</th>
             <th>Title</th>
-        <th>Description</th>
-        <th>Tid</th>
-            <th colspan="3">Action</th>
+            <th>Description</th>
+            <th>User</th>
+            <th>Question Type</th>
+            <th>Language</th>
         </tr>
         </thead>
         <tbody>
+            @php $i=1; @endphp
         @foreach($questions as $question)
             <tr>
+                <td>{{ $i++; }}</td>
                 <td>{{ $question->title }}</td>
-            <td>{{ $question->description }}</td>
-            <td>{{ $question->tid }}</td>
-                <td width="120">
-                    {!! Form::open(['route' => ['questions.destroy', $question->id], 'method' => 'delete']) !!}
-                    <div class='btn-group'>
-                        <a href="{{ route('questions.show', [$question->id]) }}"
-                           class='btn btn-default btn-xs'>
-                            <i class="far fa-eye"></i>
-                        </a>
-                        <a href="{{ route('questions.edit', [$question->id]) }}"
-                           class='btn btn-default btn-xs'>
-                            <i class="far fa-edit"></i>
-                        </a>
-                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
-                    </div>
-                    {!! Form::close() !!}
-                </td>
+                <td>{{ $question->description }}</td>
+                <td>{{ $question->User->first_name }} {{ $question->User->last_name }}</td>
+                <td>{{ $question->questionType->type }}</td>
+                <td>{{ $question->language->language }}</td>
             </tr>
         @endforeach
         </tbody>

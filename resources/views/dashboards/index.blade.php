@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Questions</h1>
+                    <h1>Dashboards</h1>
                 </div>
             </div>
         </div>
@@ -17,17 +17,10 @@
 
         <div class="clearfix"></div>
 
-        <div class="card">
-            <div class="card-body p-0">
-                @include('questions.table')
-
-                <div class="card-footer clearfix">
-                    <div class="float-right">
-                        
-                    </div>
-                </div>
+        <div class="card" >
+            <div class="card-body col-md-4" style="display: flex">
+                @include('dashboards.cards')    
             </div>
-
         </div>
     </div>
 

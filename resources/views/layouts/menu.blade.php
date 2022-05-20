@@ -31,4 +31,19 @@
     </a>
 </li>
 
+<li class="nav-item">
+    <a href="{{ route('users.index') }}"
+       class="nav-link {{ Request::is('users*') ? 'active' : '' }}">
+        <p>Users</p>
+    </a>
+</li>
+
+
+<li class="nav-item">
+    <a href="{{ route('dashboards.index') }}"
+       class="nav-link {{ Request::is('dashboards*') ? 'active' : '' }}">
+        <p>Dashboards</p>
+    </a>
+</li>
+
 

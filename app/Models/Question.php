@@ -60,9 +60,7 @@ class Question extends Model
     public static $rules = [
         'title' => 'required',
         'description' => 'required',
-        'tid' => 'required',
-        'lid' => 'required',
-        'uid' => 'required',
+
     ];
 
     /**

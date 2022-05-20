@@ -21,18 +21,13 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-
-
 Route::resource('languages', App\Http\Controllers\languageController::class);
-
-
-
 
 Route::resource('questionTypes', App\Http\Controllers\questionTypeController::class);
 
-
 Route::resource('questions', App\Http\Controllers\QuestionController::class);
 
-
 Route::resource('answers', App\Http\Controllers\AnswerController::class);
+Route::resource('users', App\Http\Controllers\UserController::class);
+
+Route::resource('dashboards', App\Http\Controllers\DashboardController::class);

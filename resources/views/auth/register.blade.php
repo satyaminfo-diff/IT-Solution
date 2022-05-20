@@ -80,11 +80,11 @@
                           <input type="radio"
                                  name="gender"
                                  class="form-check-input @error('gender') is-invalid @enderror"
-                             Value='m'>Male <br/>
+                             Value='male'>Male <br/>
                           <input type="radio"
                                name="gender"
                                class="form-check-input @error('gender') is-invalid @enderror"
-                               Value='f' checked>Female
+                               Value='female' checked>Female
                     </div>
                              {{-- <div class="input-group-append">
                                 <div class="input-group-text">

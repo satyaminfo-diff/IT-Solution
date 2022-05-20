@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Flash;
 use Response;
+use App\Models\language;
 use App\Models\Question;
+use App\Models\questionType;
 use Illuminate\Http\Request;
 use App\Repositories\QuestionRepository;
 use App\Http\Controllers\AppBaseController;
@@ -30,8 +32,7 @@ class QuestionController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $questions = $this->questionRepository->all();
-
+        $questions =   Question::with('questionType','language','User')->get();
         return view('questions.index')
             ->with('questions', $questions);
     }
@@ -43,7 +44,9 @@ class QuestionController extends AppBaseController
      */
     public function create()
     {
-        return view('questions.create');
+        $question=questionType::all();
+        $languages=language::all();
+        return view('questions.create')->with('questionTypes',$question)->with('languages',$languages);
     }
 
     /**
@@ -56,9 +59,9 @@ class QuestionController extends AppBaseController
     public function store(CreateQuestionRequest $request)
     {
         $input = $request->all();
-
+        
         $question = $this->questionRepository->create($input);
-
+        
         Flash::success('Question saved successfully.');
 
         return redirect(route('questions.index'));
